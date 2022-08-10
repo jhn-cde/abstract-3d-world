@@ -71,7 +71,7 @@ function crearPlano(filename, rotX, posX = 0, posY=0, posZ=0, rep=100, w = 1000,
     escenario.add(terreno);
 }
 function crearPiso(){
-  crearPlano('piso.jpg', Math.PI/2)
+  crearPlano('img/piso.jpg', Math.PI/2)
 }
 
 function animacion() {
