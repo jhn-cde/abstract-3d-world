@@ -13,4 +13,5 @@ function esfera(radio, x, y, z) {
   //creando la figura
   figura = new THREE.Line(geometria, material);
   return figura
+  //quista pasando aqui!!
 }
