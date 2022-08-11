@@ -11,6 +11,7 @@ var lejos = 10000;
 var camara = new THREE.PerspectiveCamera(angulo, aspecto, cerca, lejos);
 
 var figura;
+var cubo;
 var ejes;
 var controles;  //manejo de camara con mouse
 
@@ -25,14 +26,21 @@ function inicio() {
     cargaEjes();
     crearPiso();
     cargaModelo();
+    cargaCubo();
 
     controles = new THREE.OrbitControls(camara, lienzo.domElement);
 }
 
 function cargaModelo() {
     //creando la figura
-    figura = esfera(10, 0, 0, 0)
+    figura = esfera(10,16, 16, 0xffff00,100,50,200)
     escenario.add(figura);
+    
+}
+function cargaCubo() {
+    //creando la figura
+    cubo = cubo(10,10,10, 0xFF00FF,100,5,100)
+    escenario.add(cubo);
 }
 
 function cargaEjes() {
@@ -84,6 +92,7 @@ function renderModelo() {
     figura.rotation.y += 0.01;
     lienzo.render(escenario, camara);
 }
+
 
 ///llamando proceso principal
 inicio();
