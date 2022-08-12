@@ -8,14 +8,21 @@ var cerca = 0.1;
 var lejos = 10000;
 var camara = new THREE.PerspectiveCamera(angulo, aspecto, cerca, lejos);
 
+var figuras
+var personaje
+var controles
+
+
 function inicio() {
   lienzo.setSize(ancho, alto);
   document.body.appendChild(lienzo.domElement);
+  
+  camara.position.x = 100;
+  camara.position.y = 40;
+  camara.position.z = 80;
+  escenario.add(camara)
 
-  camara.position.z = 100;
-  //escenario.add(camara)
-
-  //figuras = cargaEscenario(escenario);
+  figuras = cargaEscenario(escenario);
 
   controles = new THREE.OrbitControls(camara, lienzo.domElement);
 }
@@ -50,3 +57,6 @@ function renderModelo() {
   //figura.rotation.y += 0.01;
   lienzo.render(escenario, camara);
 }
+
+inicio();
+animacion();
