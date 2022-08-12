@@ -1,7 +1,6 @@
 figuras = {}
 function cargaEscenario(escenario){
-  console.log('cargaEscenario')
-  terreno = crearPlano('img/piso.jpg', Math.PI/2)
+  terreno = crearPlano('img/tablero.png', Math.PI/2)
   escenario.add(terreno);
   figuras = {...figuras, terreno}
   
@@ -13,7 +12,7 @@ function cargaEscenario(escenario){
   return figuras
 }
 
-function crearPlano(filename, rotX, posX = 0, posY=0, posZ=0, rep=100, w = 1000, h = 1000) {
+function crearPlano(filename, rotX, posX = 0, posY=0, posZ=0, rep=10, w = 400, h = 400) {
   geometriaPlano = new THREE.PlaneGeometry(w, h, 10, 10);
   texturaPlano = new THREE.TextureLoader().load(filename);
   texturaPlano.wrapS = texturaPlano.wrapT = THREE.RepeatWrapping;
