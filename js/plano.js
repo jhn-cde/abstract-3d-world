@@ -1,5 +1,6 @@
 //variables globales
 var lienzo = new THREE.WebGLRenderer();
+lienzo.physicallyCorrectLights = true;
 var escenario = new THREE.Scene();
 
 var ancho = window.innerWidth - 15;
@@ -12,6 +13,8 @@ var camara = new THREE.PerspectiveCamera(angulo, aspecto, cerca, lejos);
 
 var figura;
 var cubo;
+var cono;
+var cilindro;
 var ejes;
 var controles;  //manejo de camara con mouse
 
@@ -27,6 +30,9 @@ function inicio() {
     crearPiso();
     cargaModelo();
     cargaCubo();
+    cargaCilindro();
+    cargaCono();
+
 
     controles = new THREE.OrbitControls(camara, lienzo.domElement);
 }
@@ -41,6 +47,22 @@ function cargaCubo() {
     //creando la figura
     cubo = cubo(10,10,10, 0xFF00FF,100,5,100)
     escenario.add(cubo);
+}
+function cargaCono() {
+    //creando la figura
+    props = {radius: 4, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
+    //creando la figura
+    cono = cono(props)
+    const light = createLights();
+
+    escenario.add(cono,light);
+}
+function cargaCilindro() {
+    //creando la figura
+    props = {radiusTop: 10, radiusBottom: 10, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
+    //creando la figura
+    cilindro = cilindro(props)
+    escenario.add(cilindro);
 }
 
 function cargaEjes() {
@@ -92,7 +114,16 @@ function renderModelo() {
     figura.rotation.y += 0.01;
     lienzo.render(escenario, camara);
 }
-
+function createLights() {
+    // Create a directional light
+    const light = new THREE.DirectionalLight('white', 8);
+  
+    // move the light right, up, and towards us
+    light.position.set(10, 10, 10);
+  
+    return light;
+}
+  
 
 ///llamando proceso principal
 inicio();
