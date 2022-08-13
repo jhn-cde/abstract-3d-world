@@ -1,4 +1,5 @@
 var lienzo = new THREE.WebGLRenderer();
+lienzo.physicallyCorrectLights = true;
 var escenario = new THREE.Scene();
 var ancho = window.innerWidth - 15;
 var alto = window.innerHeight - 10;
