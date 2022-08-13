@@ -5,8 +5,25 @@ function cargaEscenario(escenario){
   figuras = {...figuras, terreno}
   
   //
-  cubo = cubo(10,10,10, 0xFF00FF,10,5,10)
+  cubo = cubo(10,10,10, 0xFF00FF,10,5,10);
   escenario.add(cubo);
+  //
+  props = {radius: 4, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
+  cono = cono(props);
+  //const light = createLights();
+  escenario.add(cono);
+  //
+  props = {radiusTop: 10, radiusBottom: 10, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
+  cilindro = cilindro(props);
+  escenario.add(cilindro);
+  //
+  esfera = esfera(10,16, 16, 0xffff00,100,50,200);
+  escenario.add(esfera);
+  //
+  props = {radiusTop: 10, radiusBottom: 10, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
+  mipiramide = piramide(props)
+  escenario.add(mipiramide);
+
   figuras = {...figuras, terreno}
 
   return figuras
