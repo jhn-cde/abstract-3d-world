@@ -1,10 +1,56 @@
 figuras = {}
+
+figurasProps = {
+  esferas: [
+  ],
+  piramides: [
+    {
+      lenBottom: 100, 
+      height: 100, 
+      x: 100, 
+      y: 0, 
+      z: 10, 
+      color: 'red'
+    },
+    {
+      lenBottom: 100, 
+      height: 100, 
+      x: -100, 
+      y: 0, 
+      z: 10, 
+      color: 'red'
+    },
+    {
+      lenBottom: 100, 
+      height: 100, 
+      x: 100, 
+      y: 0, 
+      z: 100, 
+      color: 'red'
+    },
+    {
+      lenBottom: 100, 
+      height: 100, 
+      x: 0, 
+      y: 0, 
+      z: 100, 
+      color: 'red'
+    }
+  ],
+}
+
+
 function cargaEscenario(escenario){
   terreno = crearPlano('img/tablero.png', Math.PI/2)
   escenario.add(terreno);
   figuras = {...figuras, terreno}
   
   //
+  figurasProps.piramides.map((piramideData) => {
+    mipiramide = piramide(piramideData);
+    escenario.add(mipiramide);
+    figuras = {...figuras, mipiramide}
+  })
   cubo = cubo(10,10,10, 0xFF00FF,10,5,10);
   escenario.add(cubo);
   //
