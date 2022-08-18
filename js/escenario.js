@@ -5,7 +5,7 @@ function cargaEscenario(escenario){
   figuras = {...figuras, terreno}
   
   //
-  cubo = cubo(10,10,10, 0xFF00FF,10,5,10);
+  cubo = cubo(10,10,10, getColor('morado'),10,5,10);
   escenario.add(cubo);
   //
   props = {radius: 4, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
