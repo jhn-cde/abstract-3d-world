@@ -27,22 +27,28 @@ function cono({radius, height, x, y, z, color}) {
     //terreno.rotation.x = rotX;
     return figura
 }
-function cubo(w, h, d, color,Tx,Ty,Tz) {
+function Cubo({w, h, d,x,y,z, color}) {
     //creando el material
     const geometry = new THREE.BoxGeometry(w, h, d);
     const material = new THREE.MeshBasicMaterial( { color: color} );
     const cubo = new THREE.Mesh(geometry, material);
     //cubo.scale.set( 10, 100, 100);
-    geometry.translate( Tx, Ty, Tz);
+    //geometry.translate( Tx, Ty, Tz);
+    cubo.position.x = x
+    cubo.position.y = y
+    cubo.position.z = z
     return cubo
     //quista pasando aqui!!
 }
-function esfera(radio, w, h, color,Tx,Ty,Tz) {
+function Esfera({radio, lenBottom, height,x,y,z,color}) {
     //creando el material
-    const geometry = new THREE.SphereGeometry( radio,w,h);
+    const geometry = new THREE.SphereGeometry( radio,lenBottom, height);
     const material = new THREE.MeshBasicMaterial( { color: color} );
-    geometry.translate( Tx, Ty,Tz);
+    //geometry.translate( Tx, Ty,Tz);
     const sphere = new THREE.Mesh( geometry, material );
+    sphere.position.x = x
+    sphere.position.y = y
+    sphere.position.z = z
     return sphere
     //quista pasando aqui!!
 }
