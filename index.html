@@ -1,22 +1,32 @@
+<!DOCTYPE html>
 <html>
+
 <head>
+  <title>Discoverthreejs.com - The three.js Animation System</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8" />
-  <title>Usando THREE SJ</title>
-  <link rel="stylesheet" href="estilos.css">
+
+  <link rel="icon" href="https://discoverthreejs.com/favicon.ico" type="image/x-icon">
+
+  <link href="./styles/main.css" rel="stylesheet" type="text/css">
+  
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.143.0/build/three.module.js"
+      }
+    }
+  </script>
+
 </head>
 
 <body>
-  <script src="three.min.js"></script>
-  <script src="OrbitControls.js"></script>
-  
-  <!--Agrega tus funciones aqui-->
+  <div id="scene-container">
+    <!-- Our <canvas> will be inserted here -->
+  </div>
 
-  <script src="js/tema.js"></script>
-  <script src="js/figura.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/GLTFLoader.js"></script>
-  <script src="js/escenario.js"></script>
-  <script src="js/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>
