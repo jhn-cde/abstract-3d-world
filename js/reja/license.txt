@@ -1,0 +1,11 @@
+Model Information:
+* title:	Barandaalt
+* source:	https://sketchfab.com/3d-models/barandaalt-322befc6568f4c0b9eef37d716e2344b
+* author:	mateofoulkes (https://sketchfab.com/mateofoulkes)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Barandaalt" (https://sketchfab.com/3d-models/barandaalt-322befc6568f4c0b9eef37d716e2344b) by mateofoulkes (https://sketchfab.com/mateofoulkes) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

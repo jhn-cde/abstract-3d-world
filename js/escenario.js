@@ -1,45 +1,5 @@
 figuras = {}
 
-figurasProps = {
-  esferas: [
-  ],
-  piramides: [
-    {
-      lenBottom: 100, 
-      height: 100, 
-      x: 100, 
-      y: 0, 
-      z: 10, 
-      color: 'red'
-    },
-    {
-      lenBottom: 100, 
-      height: 100, 
-      x: -100, 
-      y: 0, 
-      z: 10, 
-      color: 'red'
-    },
-    {
-      lenBottom: 100, 
-      height: 100, 
-      x: 100, 
-      y: 0, 
-      z: 100, 
-      color: 'red'
-    },
-    {
-      lenBottom: 100, 
-      height: 100, 
-      x: 0, 
-      y: 0, 
-      z: 100, 
-      color: 'red'
-    }
-  ],
-}
-
-
 function cargaEscenario(escenario){
   terreno = crearPlano('img/tablero.png', Math.PI/2)
   escenario.add(terreno);
@@ -54,7 +14,16 @@ function cargaEscenario(escenario){
     escenario.add(mipiramide);
     figuras = {...figuras, mipiramide}
   })
-
+  figurasProps.esferas.map((esferasData) => {
+    esfera = Esfera(esferasData);
+    escenario.add(esfera);
+    figuras = {...figuras, esfera}
+  })
+  figurasProps.cubos.map((cubosData) => {
+    cubo= Cubo(cubosData);
+    escenario.add(cubo);
+    figuras = {...figuras, cubo}
+  })
   //
   props = {radius: 4, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
   cono = cono(props);
@@ -64,15 +33,54 @@ function cargaEscenario(escenario){
   props = {radiusTop: 10, radiusBottom: 10, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
   cilindro = cilindro(props);
   escenario.add(cilindro);
-  //
-  esfera = esfera(10,16, 16, 0xffff00,100,50,200);
-  escenario.add(esfera);
-  //
-  props = {radiusTop: 10, radiusBottom: 10, height: 4, x: 20, y: 2.01, z: 0, color: "#005200"}
-  mipiramide = piramide(props)
-  escenario.add(mipiramide);
 
-  figuras = {...figuras, terreno}
+
+  const light = new THREE.AmbientLight( 0xffffff );
+  escenario.add( light )
+  const loader = new THREE.GLTFLoader()
+  var baranda;
+  loader.load("js/reja/scene.gltf", (gltf) => {
+    
+    
+    gltf.scene.scale.set(-65, 40, 100);
+    gltf.scene.position.set(200, -15, 200);
+    baranda=gltf.scene
+    escenario.add( gltf.scene );
+    figuras = {...figuras, baranda}
+    
+  })
+  loader.load("js/reja/scene.gltf", (gltf) => {
+    
+    
+    gltf.scene.scale.set(-30, 40, 80);
+    gltf.scene.position.set(80, -15, 80);
+    baranda=gltf.scene
+    escenario.add( gltf.scene );
+    figuras = {...figuras, baranda}
+    
+  })
+  loader.load("js/reja/scene.gltf", (gltf) => {
+    
+    
+    gltf.scene.scale.set(-35, 40, 110);
+    gltf.scene.position.set(-200, -15, -40);
+    gltf.scene.rotation.set(0,90*Math.PI / 2,0);
+    baranda=gltf.scene
+    escenario.add( gltf.scene );
+    figuras = {...figuras, baranda}
+    
+  })
+  loader.load("js/armario/scene.gltf", (gltf) => {
+    
+    
+    gltf.scene.scale.set(-30, 40, 80);
+    gltf.scene.position.set(100, -15, -130);
+    armario=gltf.scene
+    escenario.add( armario );
+    figuras = {...figuras, armario}
+    
+  })
+
 
   return figuras
 }
