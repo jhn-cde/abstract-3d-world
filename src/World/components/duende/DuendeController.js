@@ -12,7 +12,7 @@ class DuendeController{
     actions = pactions
     duende = pduende
     velocidad = new Vector3(0, 0, 0);
-    aceleracion = 0.05
+    aceleracion = 0.1
   }
 
   initListener(){
@@ -43,11 +43,9 @@ class DuendeController{
       default:
         break;
     }
-    this.move()
   }
 
   keyUp(event){
-    console.log('ss')
     switch (event.keyCode) {
       case 87: //w
         keys.adelante = false
@@ -64,7 +62,6 @@ class DuendeController{
       default:
         break;
     }
-    this.move()
   }
   changeAnimation(action){
     if(!action.isRunning()){
@@ -78,7 +75,7 @@ class DuendeController{
 
     if(keys.adelante || keys.atras){
       this.changeAnimation(actions[0])
-      velocidad.z = keys.adelante?-aceleracion: aceleracion
+      velocidad.z = keys.adelante?+aceleracion: -aceleracion
     }else{
       this.changeAnimation(actions[1])
       velocidad.z = 0
