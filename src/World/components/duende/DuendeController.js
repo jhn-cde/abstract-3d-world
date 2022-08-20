@@ -74,11 +74,11 @@ class DuendeController{
     }
   }
   changeAnimation(action){
-    if(!action.isRunning()){
-      actions[0].stop()
-      actions[1].stop()
-      actions[2].stop()
-      action.play()
+    if(!actions[action].isRunning()){
+      actions[action].play()
+      actions.map((act, i) =>{
+        if(act.isRunning() && i != action) act.stop()  
+      })
     }
   }
   move(delta){
@@ -112,13 +112,13 @@ class DuendeController{
     }
     
     if(enMovimiento){
-      this.changeAnimation(actions[0])
+      this.changeAnimation(0)
     }else{
       if(rotando){
         console.log()
-        this.changeAnimation(actions[2])
+        this.changeAnimation(2)
       }else{
-        this.changeAnimation(actions[1])
+        this.changeAnimation(1)
       }
     }
 
