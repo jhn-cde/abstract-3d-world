@@ -5,7 +5,6 @@ let keys;
 let duende;
 let velocidad;
 let aceleracion;
-let desaceleracion;
 let rotacion;
 let enMovimiento, rotando;
 let params;
@@ -115,13 +114,11 @@ class DuendeController{
       this.changeAnimation(0)
     }else{
       if(rotando){
-        console.log()
         this.changeAnimation(2)
       }else{
         this.changeAnimation(1)
       }
     }
-
 
     const forward = new Vector3(0, 0, 1);
     forward.normalize();
@@ -136,9 +133,11 @@ class DuendeController{
     controlObject.position.add(sideways);
 
     controlObject.rotateZ(rot*Math.PI/180);
-
-    params.oControls.target.copy(controlObject.position);
-    //position.copy(controlObject.position)
+    
+    const tmp = duende.position.clone()
+    tmp.y += 50
+    params.oControls.target.copy(tmp);
+    
   }
 }
 
