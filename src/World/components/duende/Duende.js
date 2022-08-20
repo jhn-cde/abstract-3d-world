@@ -26,28 +26,33 @@ class Duende{
 
     this.setupModel();
     
-    controlador = new DuendeController(actions, duende)
+    controlador = new DuendeController(actions, duende, params)
     controlador.initListener()
   }
 
   setupModel() {
     console.log('Heey! tamo de vuelta', duende)
-    let action0 = mixer.clipAction(clips[1])
-    let action1 = mixer.clipAction(clips[0])
+    let action0 = mixer.clipAction(clips[3])//correr
+    let action1 = mixer.clipAction(clips[0])//detenerse
+    let action2 = mixer.clipAction(clips[2])//girar
     action1.play()
-    actions = [action0, action1]
-  
+    actions = [action0, action1, action2]
+    console.log(action0)
     duende.tick = (delta) => {
       mixer.update(delta)
-      controlador.move()
+      controlador.move(delta)
     };
   
-    duende.position.set(120, 0, 0.5);
+    duende.position.set(120, 0, 0);
     //duende.rotation.y = -10*(Math.PI/180)
     duende.scale.multiplyScalar(30);
   
     // move the target to the center of the front bird
-    params.controls.target.copy(duende.position);
+    
+    //params.fpControls.lookAt(duende.position)
+
+    duende.rotateZ(0*Math.PI/180)
+    params.oControls.target.copy(duende.position);
 
     params.loop.updatables.push(duende)
     params.scene.add(duende);

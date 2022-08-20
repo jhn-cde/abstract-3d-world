@@ -1,4 +1,4 @@
-import { Vector3 } from 'three'
+import { Vector3, Quaternion, FogExp2 } from 'three'
 
 let actions;
 let keys;
@@ -6,13 +6,23 @@ let duende;
 let velocidad;
 let aceleracion;
 let desaceleracion;
+let rotacion;
+let enMovimiento, rotando;
+let params;
+let accz, accx;
 
 class DuendeController{
-  constructor(pactions, pduende){
+  constructor(pactions, pduende, pparams){
     actions = pactions
     duende = pduende
     velocidad = new Vector3(0, 0, 0);
-    aceleracion = 0.1
+    rotacion = 0;
+    aceleracion = new Vector3(1, 2, 1)
+    accz = 1
+    accx = 0
+    params = pparams
+    enMovimiento = false
+    rotando = false
   }
 
   initListener(){
@@ -67,23 +77,68 @@ class DuendeController{
     if(!action.isRunning()){
       actions[0].stop()
       actions[1].stop()
+      actions[2].stop()
       action.play()
     }
   }
-  move(){
-    const duendeCopy = duende.clone()
+  move(delta){
+    let rot = 0
+    const vec = velocidad.clone()
+    const controlObject = duende;
+
+    const acc = aceleracion.clone();
 
     if(keys.adelante || keys.atras){
-      this.changeAnimation(actions[0])
-      velocidad.z = keys.adelante?+aceleracion: -aceleracion
-    }else{
-      this.changeAnimation(actions[1])
-      velocidad.z = 0
+      vec.z = acc.z*(keys.adelante ? accz : -accz) 
+      vec.x = acc.z*(keys.adelante ? -accx : accx)
+      enMovimiento = true
     }
-    if(keys.izquierda){}
-    if(keys.derecha){}
+    else{
+      enMovimiento = false
+    }
+    if(keys.izquierda || keys.derecha){
+      rot = keys.izquierda? acc.y : -acc.y
+      rotacion += rot
+      rotacion = Math.abs(rotacion)<360? rotacion: 0
 
-    duende.position.add(velocidad)
+      const tmpRot = Math.abs(rotacion) 
+      accz = Math.round((1 - (tmpRot%180)/90)*(tmpRot<180?1:-1)*1000)/1000
+      accx = Math.round((1 - Math.abs(accz))*1000)/1000
+      accx = rotacion<0 && tmpRot<180?accx:-accx
+      accx = rotacion<180?accx:-accx
+      rotando = true
+    }else{
+      rotando = false
+    }
+    
+    if(enMovimiento){
+      this.changeAnimation(actions[0])
+    }else{
+      if(rotando){
+        console.log()
+        this.changeAnimation(actions[2])
+      }else{
+        this.changeAnimation(actions[1])
+      }
+    }
+
+
+    const forward = new Vector3(0, 0, 1);
+    forward.normalize();
+
+    const sideways = new Vector3(1, 0, 0);
+    sideways.normalize();
+
+    sideways.multiplyScalar(vec.x);
+    forward.multiplyScalar(vec.z);
+    
+    controlObject.position.add(forward);
+    controlObject.position.add(sideways);
+
+    controlObject.rotateZ(rot*Math.PI/180);
+
+    params.oControls.target.copy(controlObject.position);
+    //position.copy(controlObject.position)
   }
 }
 
