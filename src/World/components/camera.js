@@ -11,7 +11,7 @@ var lejos = 10000;
 function createCamera() {
   const camera = new PerspectiveCamera(angulo, aspecto, cerca, lejos);
 
-  camera.position.set(0, 100, 100);
+  camera.position.set(120, 100, -100);
 
   return camera;
 }

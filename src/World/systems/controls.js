@@ -1,30 +1,21 @@
 import { OrbitControls } from 'https://unpkg.com/three@0.143.0/examples/jsm/controls/OrbitControls.js';
 
-import { FirstPersonControls } from 'https://unpkg.com/three@0.143.0/examples/jsm/controls/FirstPersonControls.js'
+import { PointerLockControls } from 'https://unpkg.com/three@0.143.0/examples/jsm/controls/PointerLockControls.js'
 
 function createControls(camera, canvas) {
   const oControls = new OrbitControls(camera, canvas);
-  const fpControls = new FirstPersonControls(camera, canvas)
+  const plControls = new PointerLockControls(camera, canvas)
   oControls.enableDamping = true
 
-  fpControls.enableDamping = true;
+  oControls.enableDamping = true;
 
+  // forward controls.update to our custom .tick method
   oControls.tick = () => {
     oControls.update()
   };
-  // forward controls.update to our custom .tick method
-  fpControls.tick = () => {
-    fpControls.update()
-  };
-  
-  //
-  fpControls.activeLook = true
-  fpControls.lookSpeed = 0.4
-  fpControls.movementSpeed = 20
-  fpControls.lookVertical = true
-  fpControls.moveForward = true
+  console.log(oControls, plControls)
 
-  return [oControls, fpControls];
+  return [ oControls, plControls];
 }
 
 export { createControls };

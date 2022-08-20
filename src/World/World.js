@@ -15,7 +15,7 @@ import { Loop } from './systems/Loop.js';
 import { Duende } from './components/duende/Duende.js';
 
 let camera;
-let oControls;
+let oControls, plControls;
 let fpControls;
 let renderer;
 let scene;
@@ -29,7 +29,7 @@ class World {
     scene = createScene();
     loop = new Loop(camera, scene, renderer);
     container.append(renderer.domElement);
-    [oControls, fpControls] = createControls(camera, renderer.domElement);
+    [oControls, plControls] = createControls(camera, renderer.domElement);
 
     //-- objetos
     //piso
@@ -49,7 +49,7 @@ class World {
     const { ambientLight, mainLight } = createLights();
     
     // duende
-    duende = new Duende({scene, loop, camera, fpControls, oControls})
+    duende = new Duende({scene, loop, camera, oControls, plControls})
 
     //loop animaciones
     loop.updatables.push(oControls);
