@@ -9,12 +9,10 @@ let params;
 let duendeData;
 let mixer;
 let actions;
-let velocidad;
 
 class Duende{
   constructor(pparams){
     params = pparams
-    velocidad = new Vector3(0, 0, 0);
   }
 
   getDuende(){
@@ -31,9 +29,7 @@ class Duende{
     mixer = new AnimationMixer(duende)
 
     this.setupModel();
-    
-    params.oControls.target.copy(duende.position)
-    
+
     controlador = new DuendeController(actions, duende, params)
     controlador.initListener()
   }
@@ -51,18 +47,12 @@ class Duende{
   
     duende.position.set(120, 0, 0);
 
-    //duende.rotation.y = -10*(Math.PI/180)
     duende.scale.multiplyScalar(30);
   
-    // move the target to the center of the front bird
-    
-    //params.fpControls.lookAt(duende.position)
-
     duende.rotateZ(0*Math.PI/180)
     
-    //params.oControls.target.copy(duende.position);
-    
     params.loop.updatables.push(duende)
+    duende.add(params.camera)
     params.scene.add(duende);
     
   }

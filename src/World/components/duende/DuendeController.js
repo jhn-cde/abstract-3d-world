@@ -5,7 +5,6 @@ let keys;
 let duende;
 let velocidad;
 let aceleracion;
-let desaceleracion;
 let rotacion;
 let enMovimiento, rotando;
 let params;
@@ -72,7 +71,6 @@ class DuendeController{
       default:
         break;
     }
-    console.log(params.oControls)
   }
   changeAnimation(action){
     if(!actions[action].isRunning()){
@@ -135,22 +133,10 @@ class DuendeController{
     controlObject.position.add(sideways);
 
     controlObject.rotateZ(rot*Math.PI/180);
-
-
-    if(keys.adelante || keys.atras){
-      params.camera.position.set(duende.position.x, duende.position.y+100, duende.position.z-100)
-      params.oControls.target.copy(controlObject.position)
-      
-    }
-
-    if(keys.derecha || keys.izquierda){
-      //console.log(rot*Math.PI/180)
-      params.camera.rotation.z += rot*Math.PI/180
-      //params.oControls.target.copy(controlObject.position)
-      params.oControls.update()
-    }
-
-    //params.oControls.target.copy(controlObject.position);
+    
+    const tmp = duende.position.clone()
+    tmp.y += 50
+    params.oControls.target.copy(tmp);
     
   }
 }
