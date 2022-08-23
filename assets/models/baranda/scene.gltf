@@ -4658,6 +4658,11 @@
       "uri": "scene.bin"
     }
   ],
+  "images": [
+    {
+      "uri": "textures/madera.jpg"
+    }
+  ],
   "materials": [
     {
       "doubleSided": true,
