@@ -6,6 +6,7 @@ function createControls(camera, canvas) {
 
   oControls.enableDamping = true;
 
+
   // forward controls.update to our custom .tick method
   oControls.tick = () => {
     oControls.update()

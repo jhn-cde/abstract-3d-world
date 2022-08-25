@@ -22,12 +22,6 @@ const figurasProps = {
     }
   ],
   piramides: [
-    { 
-      lenBottom: 50, 
-      height: 50, 
-      x: 150, y: 25.1, z: -150, 
-      color: 'white'
-    },
     {
       lenBottom: 50, 
       height: 50, 
@@ -38,12 +32,6 @@ const figurasProps = {
       lenBottom: 50, 
       height: 50, 
       x: 150, y: 25.1, z: 150, 
-      color: 'red'
-    },
-    {
-      lenBottom: 50, 
-      height: 50, 
-      x: -150, y: 25.1, z: 150, 
       color: 'red'
     }
   ],
@@ -143,35 +131,45 @@ const figurasProps = {
       x: 59, y: 70, z: -195,
       rx: 0, ry: 45, rz: 45,
       color: 'white'
-
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: -150, y: 15.1, z: 150, 
+      rx: 0, ry: 0, rz: 0,
+      color: 'white'
     }
   ],
   barandas:[
     {
       sx: -65, sy: 50, sz: 100,
-      x: 200, y: -20, z: 200,
+      x: 200, y: -24.8, z: 200,
       rx: 0, ry: 0, rz: 0
     },
     {
       sx: -30, sy: 50, sz: 80,
-      x: 80, y: -20, z: 80,
+      x: 80, y: -24.8, z: 80,
       rx: 0, ry: 0, rz: 0
     },
     {
       sx: -35, sy: 50, sz: 110,
-      x: -200, y: -20, z: -40,
+      x: -200, y: -24.8, z: -40,
       rx: 0, ry: 90, rz: 0
     },
     {
       sx: -35, sy: 50, sz: 110,
-      x: -200, y: -20, z: -200,
+      x: -200, y: -24.8, z: -200,
       rx: 0, ry: 90, rz: 0
+    },
+    {
+      sx: -15, sy: 50, sz: 44,
+      x: 200, y: -24.8, z: -200,
+      rx: 0, ry: 45, rz: 0
     },
   ],
   armarios:[
     {
       sx: 80, sy: 40, sz: 50,
-      x: 100, y: -5, z: -140,
+      x: 182, y: -5, z: -65,
       rx: 0, ry: -45, rz: 0
     },
   ]

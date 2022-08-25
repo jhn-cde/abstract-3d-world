@@ -63,6 +63,13 @@ function esferas(){
     
     const esfera = new Mesh(geometry, material);
     esfera.position.set(data.x, data.y, data.z);
+
+    const radiansPerSecond = 45*Math.PI/180;
+
+    esfera.tick = (delta) => {
+      esfera.rotation.y -= delta * radiansPerSecond;
+    };
+    
     group.add(esfera)
   })
 
