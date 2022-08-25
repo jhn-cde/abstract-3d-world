@@ -51,6 +51,10 @@ class World {
     // duende
     duende = new Duende({scene, loop, camera, oControls})
 
+    esferasGroup.children.map(item => {
+      loop.updatables.push(item)
+    })
+
     //loop animaciones
     loop.updatables.push(oControls);
     scene.add(ambientLight, mainLight);
