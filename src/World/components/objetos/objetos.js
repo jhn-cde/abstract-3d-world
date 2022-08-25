@@ -10,7 +10,7 @@ function cilindros(){
     
     const cilindro = new Mesh(geometry, material);
     cilindro.position.set(data.x, data.y, data.z)
-    
+    cilindro.rotation.set(data.rx**Math.PI / 2, data.ry*Math.PI / 2, data.rz*Math.PI/2);
     group.add(cilindro)
   })
 
@@ -19,13 +19,15 @@ function cilindros(){
 
 function conos(){
   const group = new Group();
+  const loader = new TextureLoader();
 
   figurasProps.conos.map((data) => {
     const geometry = new ConeGeometry(data.radio, data.altura, 16);
-    const material = new MeshStandardMaterial( { color: data.color} );
+    const material = new MeshStandardMaterial( { color: data.color,map: loader.load("./assets/img/cuerd.jpg")} );
     
     const cono = new Mesh(geometry, material);
     cono.position.set(data.x, data.y, data.z)
+    cono.rotation.set(data.rx**Math.PI / 2, data.ry*Math.PI / 2, data.rz*Math.PI/2);
     
     group.add(cono)
   })
@@ -35,15 +37,13 @@ function conos(){
 
 function cubos(){
   const group = new Group();
-  const loader = new TextureLoader();
-  const geometry = new BoxGeometry(1, 1, 1);
-  const material = new MeshStandardMaterial( { color: 'red',map: loader.load("./assets/img/carita.jpg")} );
-  const protoCubo = new Mesh(geometry, material);
-  protoCubo.position.set(0, 0, 0)
-
 
   figurasProps.cubos.map((data) => {
-    const cubo = protoCubo.clone()
+    const loader = new TextureLoader();
+    const geometry = new BoxGeometry(1, 1, 1);
+    const material = new MeshStandardMaterial( { color: data.color,map: loader.load("./assets/img/caja.jpg")} );
+    const cubo = new Mesh(geometry, material);
+  
     cubo.scale.set(data.w, data.h, data.d)
     cubo.position.set(data.x, data.y, data.z)
     cubo.material.color.set(data.color)
@@ -62,8 +62,7 @@ function esferas(){
     const material = new MeshStandardMaterial( { color: data.color,map: loader.load("./assets/img/ojo.png")} );
     
     const esfera = new Mesh(geometry, material);
-    esfera.position.set(data.x, data.y, data.z)
-    
+    esfera.position.set(data.x, data.y, data.z);
     group.add(esfera)
   })
 
