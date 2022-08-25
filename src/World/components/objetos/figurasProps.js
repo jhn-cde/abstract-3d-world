@@ -1,24 +1,24 @@
 const figurasProps = {
   esferas: [
     {
-      radio:10,
-      x: 100, y: 50, z: 200, 
+      radio:5,
+      x: 80, y: 67, z: 80, 
       color: 'white'
     },
     {
-      radio:10, 
-      x: -100, y: 50, z: 200, 
-      color: 'blue'
+      radio:5, 
+      x: -180, y: 67, z: 200, 
+      color: 'white'
     },
     {
-      radio:10, 
-      x: 100, y: 50, z: -50, 
-      color: 'blue'
+      radio:5, 
+      x: -200, y: 67, z: -50, 
+      color: 'white'
     },
     {
-      radio:10, 
-      x: 100, y: 50, z: -100,  
-      color: 'blue'
+      radio:5, 
+      x: 5, y: 67, z: -200,  
+      color: 'red'
     }
   ],
   piramides: [
@@ -26,7 +26,7 @@ const figurasProps = {
       lenBottom: 50, 
       height: 50, 
       x: 150, y: 25.1, z: -150, 
-      color: 'red'
+      color: 'white'
     },
     {
       lenBottom: 50, 
@@ -50,36 +50,98 @@ const figurasProps = {
   cubos: [
     {
       w: 30, h: 30, d: 30, 
-      x: 100, y: 50, z: 200, 
-      color: 'green'
+      x: 100, y: 46, z: -50,  
+      color: 'white'
     },
     {
-      w: 16, h: 16, d: 16, 
-      x: -100, y: 50, z: 200, 
-      color: 'green'
+      w: 30, h: 30, d: 30, 
+      x: 100, y: 15, z: -34, 
+      color: 'white'
     },
     {
-      w: 16, h: 16, d: 16, 
-      x: 100, y: 50, z: -50, 
-      color: 'green'
+      w: 30, h: 30, d: 30, 
+      x: 100, y: 15, z: -68,  
+      color: 'white'
     },
     {
-      w: 16, h: 16, d: 16, 
-      x: 100, y: 50, z: -100,  
-      color: 'green'
+      w: 20, h: 20, d: 20, 
+      x: -180, y: 10, z: -10, 
+      color: 'white'
     }
   ],
   conos:[
     {
-      radio: 10, altura: 10,
-      x: 20, y: 10.01, z: 0,
-      color: '#005200'
+      radio: 5, altura: 5,
+      x: 80, y: 60, z: 80,
+      rx: 0, ry: 0, rz: 90,
+      color: 'white'
+    },
+    {
+      radio: 5, altura: 5,
+      x: -180, y: 60, z: 200,
+      rx: 0, ry: 0, rz: 90,
+      color: 'white'
+    },
+    {
+      radio: 5, altura: 5,
+      x: -200, y: 60, z: -50,
+      rx: 0, ry: 0, rz: 90,
+      color: 'white'
+    },
+    {
+      radio: 5, altura: 5,
+      x: 5, y: 60, z: -200,
+      rx: 0, ry: 0, rz: 90,
+      color: 'white'
     }
   ],
   cilindros:[
     {
       ratioTop: 15, radioBottom: 15, altura: 30,
       x: 4, y: 18, z: 0,
+      rx: 0, ry: 0, rz: 0,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 28, y: 18, z: -190,
+      rx: 0, ry: 45, rz: 45,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 59, y: 18, z: -190,
+      rx: 0, ry: 45, rz: 45,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 88, y: 18, z: -200,
+      rx: 0, ry: 45, rz: 45,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 74, y: 44, z: -200,
+      rx: 0, ry: 45, rz: 45,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 44, y: 44, z: -190,
+      rx: 0, ry: 45, rz: 45,
+      color: 'white'
+
+    },
+    {
+      ratioTop: 15, radioBottom: 15, altura: 30,
+      x: 59, y: 70, z: -195,
+      rx: 0, ry: 45, rz: 45,
       color: 'white'
 
     }
@@ -100,12 +162,17 @@ const figurasProps = {
       x: -200, y: -20, z: -40,
       rx: 0, ry: 90, rz: 0
     },
+    {
+      sx: -35, sy: 50, sz: 110,
+      x: -200, y: -20, z: -200,
+      rx: 0, ry: 90, rz: 0
+    },
   ],
   armarios:[
     {
-      sx: -30, sy: 40, sz: 80,
-      x: 100, y: -5, z: -130,
-      rx: 0, ry: 0, rz: 0
+      sx: 80, sy: 40, sz: 50,
+      x: 100, y: -5, z: -140,
+      rx: 0, ry: -45, rz: 0
     },
   ]
 }

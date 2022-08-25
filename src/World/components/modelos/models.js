@@ -28,6 +28,7 @@ function loadModels() {
     loader.load("./assets/models/armario/scene.gltf", (gltf) => {
       gltf.scene.scale.set(data.sx, data.sy, data.sz);
       gltf.scene.position.set(data.x, data.y, data.z);
+      gltf.scene.rotation.set(data.rx**Math.PI / 2, data.ry*Math.PI / 2, data.rz*Math.PI/2);
       const armario = gltf.scene
       
       group.add(armario)
