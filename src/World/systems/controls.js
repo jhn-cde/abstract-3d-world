@@ -3,9 +3,8 @@ import { OrbitControls } from 'https://unpkg.com/three@0.143.0/examples/jsm/cont
 function createControls(camera, canvas) {
   const oControls = new OrbitControls(camera, canvas);
   oControls.enableDamping = true
-
-  oControls.enableDamping = true;
-
+  oControls.enableRotate = false
+  oControls.enableZoom = false
 
   // forward controls.update to our custom .tick method
   oControls.tick = () => {
