@@ -7,7 +7,7 @@ function createScene() {
   loader.load("./assets/img/ambiente.jpg",function(texture){
     scene.background=texture;
   })
-  scene.fog = new FogExp2('gray', 0.003);
+  scene.fog = new FogExp2('#999', 0.003);
   return scene;
 }
 
