@@ -1,6 +1,6 @@
 import { Group } from 'three'
 import { GLTFLoader } from '../../../../GLTFLoader.js'
-import { figurasProps } from '../objetos/figurasProps.js'
+import { figurasProps } from '../data/figurasProps.js'
 
 function setupBarandas(data) {
   const model = data.scene.children[0];

@@ -1,4 +1,5 @@
 import { Vector3, Quaternion, FogExp2 } from 'three'
+import { colision } from './../data/limitesColision.js'
 
 let actions;
 let keys;
@@ -128,12 +129,71 @@ class DuendeController{
 
     sideways.multiplyScalar(vec.x);
     forward.multiplyScalar(vec.z);
-    
-    controlObject.position.add(forward);
-    controlObject.position.add(sideways);
 
-    controlObject.rotateZ(rot*Math.PI/180);
+    let mov_forward = true
+    let mov_side = true
+    //movimiento
+    //adelante/atras(z) ----------------------------------------------
+    //extremos
+    if(controlObject.position.z >= colision.limites.z && vec.z > 0)
+      mov_forward = false
+    if(controlObject.position.z <= -colision.limites.z && vec.z <= 0)
+      mov_forward = false
+
+
+    //izquierda/deracha(x) ----------------------------------------------
+    if(controlObject.position.x >= colision.limites.x && vec.x > 0)
+      mov_side = false
+    if(controlObject.position.x <= -colision.limites.x && vec.x <= 0)
+      mov_side = false
     
+    //objetos
+    for(let i = 0; i < colision.objetos.length; i++){
+      const obx = colision.objetos[i].x
+      const obz = colision.objetos[i].z
+      const poszIni = controlObject.position.z
+      const posxIni = controlObject.position.x
+      //forma esfera
+      if(colision.objetos[i].r != undefined){
+        const radioIni = Math.sqrt(Math.pow(posxIni - obx, 2)+Math.pow(poszIni - obz, 2))
+        const radioFinz = Math.sqrt(Math.pow(posxIni - obx, 2)+Math.pow(poszIni+vec.z - obz, 2))
+        const radioFinx = Math.sqrt(Math.pow(posxIni+vec.x - obx, 2)+Math.pow(poszIni - obz, 2))
+      
+        if (radioFinz < radioIni && radioFinz < colision.objetos[i].r)
+          mov_forward = false
+        if (radioFinx < radioIni && radioFinx < colision.objetos[i].r)
+          mov_side = false
+      }
+      //forma paralelepipedo
+      else{
+        const distxIni = Math.abs(posxIni-obx)
+        const distzIni = Math.abs(poszIni-obz)
+        const distxFin = Math.abs(posxIni+vec.x-obx)
+        const distzFin = Math.abs(poszIni+vec.z-obz)
+
+        if(distxFin < colision.objetos[i].lx && distzFin < colision.objetos[i].lz){
+          if (distzFin < distzIni)
+            mov_forward = false
+          if (distxFin < distxIni)
+            mov_side = false
+        }
+      }
+        
+      if(!mov_side && !mov_forward)
+        break
+    }
+
+    //movimiento
+    if(mov_forward)
+      controlObject.position.add(forward);
+    if(mov_side)
+      controlObject.position.add(sideways);
+    //rotacion
+    controlObject.rotateZ(rot*Math.PI/180);
+
+
+
+    // actualizar position de camara
     const tmp = duende.position.clone()
     tmp.y += 50
     params.oControls.target.copy(tmp);

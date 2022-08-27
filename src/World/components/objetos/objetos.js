@@ -1,5 +1,5 @@
 import { BoxGeometry, ConeGeometry, CylinderGeometry, MeshStandardMaterial, Mesh, Group, SphereGeometry, TextureLoader } from 'three'
-import { figurasProps } from './figurasProps.js' 
+import { figurasProps } from '../data/figurasProps.js' 
 
 function cilindros(){
   const group = new Group();
@@ -59,12 +59,12 @@ function esferas(){
   figurasProps.esferas.map((data) => {
     const loader = new TextureLoader();
     const geometry = new SphereGeometry(data.radio, 16, 16);
-    const material = new MeshStandardMaterial( { color: data.color,map: loader.load("./assets/img/ojo.png")} );
-    
+    const material = new MeshStandardMaterial( { color: data.color,map: loader.load(data.img)} );
+
     const esfera = new Mesh(geometry, material);
     esfera.position.set(data.x, data.y, data.z);
 
-    const radiansPerSecond = 45*Math.PI/180;
+    let radiansPerSecond = data.giro*Math.PI/180;
 
     esfera.tick = (delta) => {
       esfera.rotation.y -= delta * radiansPerSecond;
