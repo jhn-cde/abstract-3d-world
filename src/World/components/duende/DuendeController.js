@@ -172,10 +172,15 @@ class DuendeController{
         const distzFin = Math.abs(poszIni+vec.z-obz)
 
         if(distxFin < colision.objetos[i].lx && distzFin < colision.objetos[i].lz){
-          if (distzFin < distzIni)
+          if (distzFin < distzIni && distxIni < colision.objetos[i].lx)
+          {
             mov_forward = false
-          if (distxFin < distxIni)
+          }
+          if (distxFin < distxIni && distzIni < colision.objetos[i].lz){
             mov_side = false
+          }
+
+
         }
       }
         
