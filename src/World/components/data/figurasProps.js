@@ -3,37 +3,49 @@ const figurasProps = {
     {
       radio:5,
       x: 80, y: 67, z: 80, 
-      color: 'white'
+      color: 'white',
+      img: './assets/img/ojo.png',
+      giro: 45
     },
     {
       radio:5, 
       x: -180, y: 67, z: 200, 
-      color: 'white'
+      color: 'white',
+      img: './assets/img/ojo.png',
+      giro: 45
     },
     {
       radio:5, 
       x: -200, y: 67, z: -50, 
-      color: 'white'
+      color: 'white',
+      img: './assets/img/ojo.png',
+      giro: 45
     },
     {
       radio:5, 
       x: 5, y: 67, z: -200,  
-      color: 'red'
-    }
-  ],
-  piramides: [
-    {
-      lenBottom: 50, 
-      height: 50, 
-      x: -150, y: 25.1, z: -150, 
-      color: 'red'
+      color: 'red',
+      img: './assets/img/ojo.png',
+      giro: 45
     },
     {
-      lenBottom: 50, 
-      height: 50, 
-      x: 150, y: 25.1, z: 150, 
-      color: 'red'
-    }
+      radio:15, 
+      x: -180, y: 14, z: -180,  
+      color: 'red',
+      img: './assets/img/craneos.jpg',
+      giro: 0
+    },
+    {
+      radio:15, 
+      x: 180, y: 14, z: 180,  
+      color: 'red',
+      img: './assets/img/craneos.jpg',
+      giro: 0
+    },
+
+  ],
+  piramides: [
+    
   ],
   cubos: [
     {
