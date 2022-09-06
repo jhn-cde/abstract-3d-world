@@ -1,4 +1,4 @@
-import { Vector3, Quaternion, FogExp2 } from 'three'
+import { Vector3 } from 'three'
 import { colision } from './../data/limitesColision.js'
 
 let actions;
@@ -140,7 +140,6 @@ class DuendeController{
     if(controlObject.position.z <= -colision.limites.z && vec.z <= 0)
       mov_forward = false
 
-
     //izquierda/deracha(x) ----------------------------------------------
     if(controlObject.position.x >= colision.limites.x && vec.x > 0)
       mov_side = false
@@ -179,8 +178,6 @@ class DuendeController{
           if (distxFin < distxIni && distzIni < colision.objetos[i].lz){
             mov_side = false
           }
-
-
         }
       }
         
@@ -196,13 +193,10 @@ class DuendeController{
     //rotacion
     controlObject.rotateZ(rot*Math.PI/180);
 
-
-
     // actualizar position de camara
     const tmp = duende.position.clone()
     tmp.y += 50
     params.oControls.target.copy(tmp);
-    
   }
 }
 
