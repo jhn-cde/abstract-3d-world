@@ -21,8 +21,6 @@ class Duende{
   async loadDuende() {
     const loader = new GLTFLoader();
     duendeData = await loader.loadAsync('./assets/models/zombie/scene.gltf')
-
-    console.log('Heey! tamo de vuelta', duendeData)
     
     clips = duendeData.animations
     duende = duendeData.scene.children[0];
@@ -46,9 +44,7 @@ class Duende{
     };
   
     duende.position.set(120, 0, 0);
-
     duende.scale.multiplyScalar(30);
-  
     duende.rotateZ(0*Math.PI/180)
     
     params.loop.updatables.push(duende)
