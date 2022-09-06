@@ -1,5 +1,5 @@
 import { GLTFLoader } from '../../../../GLTFLoader.js'
-import { AnimationMixer, Vector3 } from 'three';
+import { AnimationMixer } from 'three';
 import { DuendeController } from './DuendeController.js'
 
 let duende;
